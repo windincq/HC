@@ -1,0 +1,89 @@
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Waterfall</title>
+<div id="container" style="height: 400px; min-width: 600px; max-width: 800px; margin: 0 auto">
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="http://code.highcharts.com/highcharts-more.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="http://code.highcharts.com/stock/highstock.js"></script>
+		<script src="http://code.highcharts.com/modules/drilldown.js"></script>
+		<script src="http://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="http://code.highcharts.com/modules/funnel.js"></script>
+		<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/drilldown.js"></script>
+		<script type="text/javascript">
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'waterfall'
+        },
+
+        title: {
+            text: '净利润瀑布图（科大讯飞-2017）'
+        },
+		credits: {
+			enabled: false
+		},
+
+        xAxis: {
+            type: 'category'
+        },
+
+        /*yAxis: {
+            title: {
+                text: 'RMB'
+            }
+        },*/
+
+        legend: {
+            enabled: false
+        },
+
+        tooltip: {
+            pointFormat: '<b>￥{point.y:,.2f}</b> 万元'
+        },
+
+        series: [{
+            upColor: Highcharts.getOptions().colors[3],
+            color: Highcharts.getOptions().colors[2],
+            data: [{
+                name: '经营活动净收益',
+                y:38271.99
+            }, {
+                name: '价值变动净收益',
+                y:15680.03
+            }, {
+                name: '营业外净收益',
+                y:3753.26
+            }, {
+                name: '利润总额',
+                isSum: true,
+                color: Highcharts.getOptions().colors[1]
+            }, {
+                name: '所得税费用',
+                y:-9787.3
+            }, {
+                name: '净利润',
+                isSum: true,
+                color: Highcharts.getOptions().colors[1]
+            }],
+            dataLabels: {
+                enabled: true,
+                formatter: function () {
+                    return Highcharts.numberFormat(this.y /10000, 2, ',') + '亿';
+                },
+                style: {
+                    color: '#FFFFFF',
+                    fontWeight: 'bold',
+                    textShadow: '0px 0px 3px black'
+                }
+            },
+            pointPadding: 0
+        }]
+    });
+});
+</script>
+</div>
+
